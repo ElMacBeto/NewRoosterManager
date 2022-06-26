@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <!--these items will be always visible
+        on the Bottom navigation bar-->
+    <item
+        android:id="@+id/gallos_home"
+        android:icon="@drawable/ic_gallo"
+        android:title="Home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+    <item
+        android:id="@+id/marcas_home"
+        android:icon="@drawable/ic_round_menu_book_24"
+        android:title="Marcas"
+        app:showAsAction="always" />
+
+    <!--these items will be under the more
+        button of the Bottom navigation bar-->
+
+
+</menu>

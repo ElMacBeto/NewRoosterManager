@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:title="search"
+        android:id="@+id/search_item"
+        android:icon="@drawable/ic_search"
+        android:contentDescription="Buscar"
+        android:iconTint="@color/white"
+        app:showAsAction="always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+    <item
+        android:icon="@drawable/ic_more"
+        android:title=""
+        app:iconTint="@color/white"
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/Profile"
+                android:icon="@drawable/ic_person"
+                android:title="Cambiar nombre"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/opciones_item"
+                android:icon="@drawable/ic_add_mark"
+                android:title="Agregar linea"
+                app:showAsAction="ifRoom" />
+
+        </menu>
+
+    </item>
+
+
+</menu>

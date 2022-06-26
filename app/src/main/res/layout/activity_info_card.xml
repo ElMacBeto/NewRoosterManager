@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sis.ui.view.activities.InfoCardActivity"
+    android:background="@drawable/bg_register_gradient">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_top">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="Numero de placa"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                app:liftOnScroll="true"
+                android:elevation="0dp"
+                android:background="@android:color/transparent"/>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="5sp"
+            android:paddingTop="5sp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:ignore="SpeakableTextPresentCheck">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="5dp">
+                <ImageView
+                    android:id="@+id/gallo_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="250sp"
+                    android:src="@drawable/ic_gallo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="TODO"
+                    android:transitionName="shereTransition"
+                    android:layout_marginTop="10sp" />
+                <TextView
+                    android:id="@+id/gallo_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Año: 2021"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:gravity="start"
+                    android:layout_marginTop="30sp"
+                    android:background="@drawable/border_bottom"/>
+                <TextView
+                    android:id="@+id/gallo_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Linea: Radio Puro"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10sp"
+                    android:background="@drawable/border_bottom"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border_bottom">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Marca: "
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:gravity="start"
+                        android:layout_marginTop="10sp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/gallo_mark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-Pata derecha: adentro \n -Pata izquierda: afuera \n Nariz: las dos"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:gravity="start"
+                            android:layout_marginTop="10sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/edit_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/grey"
+                    android:text="Editar"
+                    android:textAllCaps="true"
+                    android:layout_gravity="end"
+                    android:layout_margin="10sp"/>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

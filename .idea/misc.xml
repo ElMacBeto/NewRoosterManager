@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_add_mark.xml" value="0.1455" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_android.xml" value="0.1455" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_gallina_mini.xml" value="0.2115" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_gallo_mini.xml" value="0.2115" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_home.xml" value="0.1455" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_more.xml" value="0.1455" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_person.xml" value="0.1455" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_plaque.xml" value="0.106" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/ic_search.xml" value="0.1455" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/nariz_ambas_.xml" value="0.2115" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/nariz_derecha_.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/rb_gender.xml" value="0.2115" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable-v24/search_btn.xml" value="0.2115" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_btn_delete.xml" value="0.1365" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_btns_item.xml" value="0.1365" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_delete_white.xml" value="0.1365" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_gradient_top.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_list.xml" value="0.203" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_register_activity.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_register_gradient.xml" value="0.152" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/bg_sp_item.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/border_bottom.xml" value="0.185" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.17" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.1365" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/ic_gallo.xml" value="0.116" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/ic_icon_gallo_frente.xml" value="0.153" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.17" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/ic_outline_camera.xml" value="0.152" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/round_background.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/drawable/summary_shape.xml" value="0.203" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/activity_info_card.xml" value="0.25" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/activity_register_gallos.xml" value="0.5" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/delete_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/fragment_gallos_home.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/fragment_marcas_home.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/fragment_register_gallos.xml" value="0.1" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/item_info_card.xml" value="0.5" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/item_list_gallos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/item_lote.xml" value="0.33" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/layout/list_item.xml" value="1.0" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/menu/app_top_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.16510416666666666" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/menu/top_app_bar.xml" value="0.33" />
+        <entry key="..\:/Users/darck/AndroidStudioProjects/RoosterManager/app/src/main/res/xml/file_paths.xml" value="0.17395833333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
