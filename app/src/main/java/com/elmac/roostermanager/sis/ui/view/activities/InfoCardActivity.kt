@@ -1,6 +1,8 @@
 package com.elmac.roostermanager.sis.ui.view.activities
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
@@ -40,6 +42,7 @@ class InfoCardActivity : AppCompatActivity(){
 
         infoViewModel.getGalloById(idGallo)
 
+        binding.editBtn.setOnClickListener{changeEditActivity()}
 
     }
 
@@ -62,5 +65,15 @@ class InfoCardActivity : AppCompatActivity(){
 
     }
 
+    private fun changeEditActivity(){
+        val intent = Intent(this, RegisterGallosActivity::class.java )
+        intent.putExtra(RegisterGallosActivity.ID, idGallo)
+        startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        infoViewModel.getGalloById(idGallo)
+    }
 
 }

@@ -2,4 +2,30 @@
     <string name="app_name">RoosterManager</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--    mensajes de error de formulario de registro-->
+    <string name="error_line">linea no debe de estar vacia</string>
+    <string name="error_year">año debe de contener 4 digitos</string>
+
+    <!--    spinner image despcription-->
+    <string-array name="leg_image_description">
+        <item>ninguna</item>
+        <item>afuera</item>
+        <item>adentro</item>
+        <item>las dos</item>
+    </string-array>
+
+    <string-array name="noise_image_description">
+        <item>ninguna</item>
+        <item>derecha</item>
+        <item>izquierda</item>
+        <item>las dos</item>
+    </string-array>
+
+    <string-array name="gender_image_description">
+        <item>macho</item>
+        <item>hembra</item>
+    </string-array>
+
 </resources>

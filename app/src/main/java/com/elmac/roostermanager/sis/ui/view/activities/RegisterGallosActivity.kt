@@ -11,22 +11,24 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.widget.AutoCompleteTextView
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
-import androidx.lifecycle.Observer
 import com.elmac.roostermanager.R
 import com.elmac.roostermanager.data.datasource.entities.GalloEntity
 import com.elmac.roostermanager.databinding.ActivityRegisterGallosBinding
 import com.elmac.roostermanager.sis.ui.adapter.SpinnerAdapter
 import com.elmac.roostermanager.sis.ui.dialog.ImageExistAlertDialog
 import com.elmac.roostermanager.sis.ui.dialog.SelectSourcePicDialog
+import com.elmac.roostermanager.sis.utilities.error.ErrorMessage
 import com.elmac.roostermanager.sis.viewmodel.RegisterGallosViewModel
-import kotlinx.coroutines.selects.select
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
@@ -42,7 +44,9 @@ class RegisterGallosActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterGallosBinding
     private val registerGallosViewModel:RegisterGallosViewModel by viewModels()
     var dataGallo= GalloEntity(0)
-    var PhotoPath=""
+    var isEdit = false
+    var idGallo = 0
+    private var photoPath=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,45 +59,88 @@ class RegisterGallosActivity : AppCompatActivity() {
 
         binding.cameraBtn.setOnClickListener{ selectImage()}
         binding.guardarBtn.setOnClickListener { saveGallo()}
+        binding.spPataIzquierda.onItemSelectedListener =object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
 
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val clickedItem =  parent!!.getItemAtPosition(position) as SpinnerValueModel
+                dataGallo.leftLeg = clickedItem.description
+            }
+        }
+
+        binding.spPataDerecha.onItemSelectedListener =object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val clickedItem =  parent!!.getItemAtPosition(position) as SpinnerValueModel
+                dataGallo.rightLeg = clickedItem.description
+            }
+        }
+
+        binding.spNariz.onItemSelectedListener =object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val clickedItem =  parent!!.getItemAtPosition(position) as SpinnerValueModel
+                dataGallo.noise = clickedItem.description
+            }
+        }
+
+        binding.spGenero.onItemSelectedListener =object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val clickedItem =  parent!!.getItemAtPosition(position) as SpinnerValueModel
+                dataGallo.gender = clickedItem.description
+            }
+        }
     }
 
     private fun setInitDataGallo(){
-        val id = intent.getIntExtra(ID,0)
-        if(id!=0){
-            registerGallosViewModel.setInitValues(id)
+        idGallo = intent.getIntExtra(ID,0)
+        if(idGallo!=0){
+            registerGallosViewModel.setInitValues(idGallo)
         }
     }
 
     private fun saveGallo(){
         getNewGalloData()
-        registerGallosViewModel.validarData(dataGallo)
+        registerGallosViewModel.validarData(dataGallo, isEdit)
     }
 
     private fun setObservables(){
-        registerGallosViewModel.gallo.observe(this, Observer {
-            dataGallo=it
+        registerGallosViewModel.gallo.observe(this) { gallo->
+            dataGallo = gallo
             setFormWithInitValues()
-        })
+        }
 
-        registerGallosViewModel.fragment.observe(this, Observer {
+        registerGallosViewModel.fragment.observe(this) {
             finish()
-        })
+        }
+
+        registerGallosViewModel.errorMessage.observe(this){ errors ->
+            setErrorMessages(errors)
+        }
     }
 
     private fun getNewGalloData(){
         dataGallo.line = binding.lienaValue.text.toString()
-        dataGallo.year = binding.yearValue.text.toString().toInt()
+        dataGallo.year = binding.yearValue.text.toString()
         dataGallo.plaque = binding.placaValue.text.toString()
         dataGallo.ring = binding.ringValue.text.toString()
-        dataGallo.leftLeg = binding.spPataIzquierda.selectedItem.toString()
-        dataGallo.rightLeg = binding.spPataDerecha.selectedItem.toString()
-        dataGallo.noise = binding.spNariz.selectedItem.toString()
-        dataGallo.gender = binding.spGenero.selectedItem.toString()
-        dataGallo.id=0
+        dataGallo.id = if(isEdit) idGallo else 0
     }
 
     private fun setFormWithInitValues(){
+        isEdit=true
         binding.lienaValue.setText(dataGallo.line)
         binding.yearValue.setText(dataGallo.year.toString())
         binding.placaValue.setText(dataGallo.plaque)
@@ -101,28 +148,46 @@ class RegisterGallosActivity : AppCompatActivity() {
     }
 
     private fun initValuesSpinner(){
+
         val legImages = listOf(R.drawable.pata_ninguna_, R.drawable.pata_afuera_,
             R.drawable.pata_adentro_, R.drawable.pata_ambas_)
         val noiseImage= listOf(R.drawable.nariz_ninguna_, R.drawable.nariz_derecha_,
             R.drawable.nariz_izquierda_, R.drawable.nariz_ambas_)
         val genderImage= listOf(R.drawable.ic_gallo, R.drawable.ic_gallina_mini)
 
+        val legArray = resources.getStringArray(R.array.leg_image_description).toList()
+        val noiseArray = resources.getStringArray(R.array.noise_image_description)
+        val genderArray = resources.getStringArray(R.array.gender_image_description)
+
+        val legList = mutableListOf<SpinnerValueModel>()
+        val noiseList = mutableListOf<SpinnerValueModel>()
+        val genderList = mutableListOf<SpinnerValueModel>()
+
+        legImages.forEachIndexed{index, image->
+            legList.add(SpinnerValueModel(image, legArray[index]))
+        }
+        noiseImage.forEachIndexed{index, image->
+            noiseList.add(SpinnerValueModel(image, noiseArray[index]))
+        }
+        genderImage.forEachIndexed{index, image->
+            genderList.add(SpinnerValueModel(image, genderArray[index]))
+        }
 
         binding.spPataIzquierda.apply {
-            adapter= SpinnerAdapter(applicationContext, legImages)
-            setSelection(1,false)
+            adapter= SpinnerAdapter(applicationContext, legList)
+            setSelection(0,false)
         }
         binding.spPataDerecha.apply {
-            adapter= SpinnerAdapter(applicationContext, legImages)
-            setSelection(1,false)
+            adapter= SpinnerAdapter(applicationContext, legList)
+            setSelection(0,false)
         }
         binding.spNariz.apply {
-            adapter= SpinnerAdapter(applicationContext, noiseImage)
-            setSelection(1,false)
+            adapter= SpinnerAdapter(applicationContext, noiseList)
+            setSelection(0,false)
         }
         binding.spGenero.apply {
-            adapter= SpinnerAdapter(applicationContext, genderImage)
-            setSelection(1,false)
+            adapter= SpinnerAdapter(applicationContext, genderList)
+            setSelection(0,false)
         }
     }
 
@@ -132,7 +197,7 @@ class RegisterGallosActivity : AppCompatActivity() {
             val alert = ImageExistAlertDialog{ -> showSelectPicSourceAlert() }
             alert.show(supportFragmentManager, ImageExistAlertDialog.TAG)
         }else {
-            val uri = PhotoPath.toUri()
+            val uri = photoPath.toUri()
             val sourceFile = DocumentFile.fromSingleUri(this, uri)
             if (sourceFile!!.exists()) {
                 val alert = ImageExistAlertDialog{ -> showSelectPicSourceAlert() }
@@ -140,6 +205,13 @@ class RegisterGallosActivity : AppCompatActivity() {
             }else{
                 showSelectPicSourceAlert()
             }
+        }
+    }
+
+    private fun setErrorMessages(errorMessage:ErrorMessage){
+        with(binding){
+            lienaValue.error = errorMessage.line
+            yearValue.error = errorMessage.year
         }
     }
 
@@ -153,7 +225,7 @@ class RegisterGallosActivity : AppCompatActivity() {
         alert.show(supportFragmentManager, "imagen")
     }
 
-    fun selectPictureGalery(){
+    private fun selectPictureGalery(){
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
@@ -203,7 +275,7 @@ class RegisterGallosActivity : AppCompatActivity() {
         ).apply {
             // Save a file: path for use with ACTION_VIEW intents
             if (absolutePath != null){
-                PhotoPath = absolutePath
+                photoPath = absolutePath
             }
         }
         return picture
@@ -217,10 +289,10 @@ class RegisterGallosActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val bitmap: Bitmap = BitmapFactory.decodeFile(PhotoPath)
+            val bitmap: Bitmap = BitmapFactory.decodeFile(photoPath)
             val imageScaled = Bitmap.createScaledBitmap(bitmap, 550, 400, false)
             binding.cameraBtn.setImageBitmap(imageScaled)
-            dataGallo.img = PhotoPath
+            dataGallo.img = photoPath
         }
 
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data != null){
@@ -232,8 +304,10 @@ class RegisterGallosActivity : AppCompatActivity() {
             val bArray = bos.toByteArray()
             file.writeBytes(bArray)
             binding.cameraBtn.setImageBitmap(bitmap)
-            dataGallo.img = PhotoPath
+            dataGallo.img = photoPath
         }
     }
+
+
 
 }

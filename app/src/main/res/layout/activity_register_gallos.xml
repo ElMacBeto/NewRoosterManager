@@ -50,9 +50,10 @@
                             <ImageView
                                 android:layout_width="30sp"
                                 android:layout_height="30sp"
-                                android:src="@drawable/ic_icon_gallo_frente"
+                                android:src="@drawable/ic_gallo"
                                 app:tint="@color/add_btn" />
                             <com.google.android.material.textfield.TextInputLayout
+                                app:errorEnabled="true"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Linea"
@@ -77,16 +78,19 @@
                                 android:src="@drawable/ic_calendar"
                                 app:tint="@color/add_btn" />
                             <com.google.android.material.textfield.TextInputLayout
+                                app:errorEnabled="true"
                                 style="@style/myTextViewLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Año">
+                                android:hint="Año"
+                                >
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/year_value"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:maxLines="1"
-                                    android:textColor="@color/black" />
+                                    android:textColor="@color/black"
+                                    android:inputType="number"/>
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
                         <LinearLayout
@@ -120,19 +124,16 @@
                             android:layout_marginVertical="3dp"
                             android:gravity="center"
                             android:orientation="horizontal">
-
                             <ImageView
                                 android:layout_width="30sp"
                                 android:layout_height="30sp"
                                 android:src="@drawable/ic_circle"
                                 app:tint="@color/add_btn" />
-
                             <com.google.android.material.textfield.TextInputLayout
                                 style="@style/myTextViewLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="No. de anillo">
-
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/ring_value"
                                     android:layout_width="match_parent"
@@ -162,18 +163,17 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:orientation="vertical">
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Izquierda"
                                     android:textColor="@color/black" />
-
                                 <Spinner
                                     android:id="@+id/sp_pata_izquierda"
                                     android:layout_width="match_parent"
                                     android:layout_height="65sp"
-                                    android:gravity="center" />
+                                    android:gravity="center"
+                                    style="@android:style/Widget.Holo.Light.Spinner"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="0sp"
@@ -186,37 +186,32 @@
                                     android:layout_height="wrap_content"
                                     android:text="Derecha"
                                     android:textColor="@color/black" />
-
                                 <Spinner
                                     android:id="@+id/sp_pata_derecha"
                                     android:layout_width="match_parent"
                                     android:layout_height="65sp"
-
                                     android:dropDownSelector="@drawable/bg_delete_white"
-                                    android:gravity="center" />
+                                    android:gravity="center"
+                                    style="@android:style/Widget.Holo.Light.Spinner"/>
                             </LinearLayout>
-
                             <LinearLayout
                                 android:layout_width="0sp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:orientation="vertical">
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Nariz"
                                     android:textColor="@color/black" />
-
                                 <Spinner
                                     android:id="@+id/sp_nariz"
                                     android:layout_width="match_parent"
                                     android:layout_height="65sp"
-                                    android:gravity="center" />
-
+                                    android:gravity="center"
+                                    style="@android:style/Widget.Holo.Light.Spinner"/>
                             </LinearLayout>
-
                             <LinearLayout
                                 android:layout_width="0sp"
                                 android:layout_height="wrap_content"
@@ -234,7 +229,7 @@
                                     android:layout_height="65sp"
                                     android:layout_gravity="center"
                                     android:gravity="start"
-                                    />
+                                    style="@android:style/Widget.Holo.Light.Spinner"/>
                             </LinearLayout>
                         </LinearLayout>
                         <Button

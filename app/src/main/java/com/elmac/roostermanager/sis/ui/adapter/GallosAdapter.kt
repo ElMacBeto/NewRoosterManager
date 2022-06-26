@@ -1,8 +1,10 @@
 package com.elmac.roostermanager.sis.ui.adapter
 
+import android.R.id
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +18,7 @@ import com.elmac.roostermanager.MainApplication
 import com.elmac.roostermanager.R
 import com.elmac.roostermanager.data.datasource.entities.GalloEntity
 import java.io.File
+import java.util.Arrays.toString
 
 
 class GallosAdapter:
@@ -72,7 +75,8 @@ class GallosAdapter:
         }
 
         fun setInfocard(gallo: GalloEntity) {
-            name.text = gallo.line
+
+            name.text = "Linea: "+ gallo.line
             description.text = gallo.plaque.toString()
             roosterImage.setImageResource(R.drawable.ic_gallo)
             val file = File(gallo.img)

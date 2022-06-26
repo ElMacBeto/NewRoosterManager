@@ -13,8 +13,8 @@ class MakeMessageInfoCard {
 
         val message1 = SpannableString("Año: ${gallo.year!!}")
         val message2 = SpannableString("Linea: ${gallo.line!!.uppercase()}")
-        val message3 = SpannableString("-${gallo.leftLeg!!.uppercase()} \n" +
-                        "-${gallo.rightLeg!!.uppercase()} \n -${gallo.noise!!.uppercase()}")
+        val message3 = SpannableString("-Pata izquierda ${gallo.leftLeg!!.uppercase()} \n" +
+                        "-Pata derecha ${gallo.rightLeg!!.uppercase()} \n-Nariz ${gallo.noise!!.uppercase()}")
 
         val boldSpan1 = StyleSpan(Typeface.BOLD)
         val boldSpan2 = StyleSpan(Typeface.BOLD)

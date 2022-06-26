@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import com.elmac.roostermanager.R
+import com.elmac.roostermanager.sis.ui.view.activities.SpinnerValueModel
 
 
-class SpinnerAdapter(context: Context, imageList: List<Int>):ArrayAdapter<Int>(context, 0, imageList){
+class SpinnerAdapter(context: Context, imageList: MutableList<SpinnerValueModel>):ArrayAdapter<SpinnerValueModel>(context, 0, imageList){
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -22,12 +23,13 @@ class SpinnerAdapter(context: Context, imageList: List<Int>):ArrayAdapter<Int>(c
     }
 
     fun initView(position: Int, convertView: View?, parent: ViewGroup):View{
-        val image = getItem(position)
+
+        val data = getItem(position)
         val view = LayoutInflater.from(context).inflate(R.layout.list_item,parent, false)
 
         val myImage = view.findViewById<ImageView>(R.id.imageView)
-        myImage.setImageResource(image!!)
-        myImage.contentDescription="afuera"
+        myImage.setImageResource(data!!.image!!)
+        myImage.contentDescription = data.description
 
         return view
     }

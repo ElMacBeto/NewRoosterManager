@@ -9,7 +9,7 @@ import com.elmac.roostermanager.sis.Constantes
 data class GalloEntity(
     @PrimaryKey(autoGenerate = true) var id:Int,
     @ColumnInfo(name = Constantes.LINE_FIELD) var line:String?="",
-    @ColumnInfo(name = Constantes.YEAR_FIELD) var year:Int? =0,
+    @ColumnInfo(name = Constantes.YEAR_FIELD) var year:String? ="",
     @ColumnInfo(name = Constantes.PLAQUE_FIELD) var plaque:String? ="",
     @ColumnInfo(name = Constantes.RING_FIELD) var ring:String? = "",
     @ColumnInfo(name = Constantes.GENDER_FIELD) var gender:String?="",
